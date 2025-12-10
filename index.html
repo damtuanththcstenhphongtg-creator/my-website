@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hệ Thống eLearning TH&THCS Tênh Phông – Quài Tở – Điện Biên</title>
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        color: #fff;
+    }
+    header {
+        text-align: center;
+        padding: 30px 10px;
+        background: rgba(0,0,0,0.25);
+    }
+    h1 {
+        margin: 0;
+        font-size: 34px;
+        font-weight: 800;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.35);
+        line-height: 1.35;
+    }
+    .subtitle {
+        font-size: 18px;
+        opacity: 0.9;
+        margin-top: 6px;
+        font-weight: 500;
+    }
+    .grade-container {
+        max-width: 950px;
+        margin: 45px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 28px;
+    }
+    .grade-box {
+        background: rgba(255,255,255,0.20);
+        padding: 28px;
+        border-radius: 18px;
+        text-align: center;
+        font-size: 26px;
+        cursor: pointer;
+        transition: 0.35s;
+        font-weight: 650;
+        backdrop-filter: blur(10px);
+    }
+    .grade-box:hover {
+        transform: scale(1.08);
+        background: rgba(255,255,255,0.38);
+    }
+    footer {
+        text-align: center;
+        padding: 18px;
+        font-size: 15px;
+        opacity: 0.97;
+        background: rgba(0,0,0,0.25);
+        margin-top: 50px;
+    }
+    .author {
+        font-weight: bold;
+        color: #ffeb3b;
+    }
+
+    /* --- Đăng nhập --- */
+    .login-container {
+        max-width: 400px;
+        margin: 40px auto;
+        background: rgba(255,255,255,0.15);
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        backdrop-filter: blur(8px);
+    }
+    .login-box button {
+        margin: 10px;
+        padding: 12px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: #ffeb3b;
+        color: #000;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .login-box button:hover {
+        background: #ffc107;
+    }
+    #loginForm {
+        margin-top: 20px;
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+    }
+    #loginForm input, #loginForm select {
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        font-size: 15px;
+    }
+    #loginForm button {
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        background: #4caf50;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    #loginForm button:hover {
+        background: #388e3c;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>HỆ THỐNG ELEARNING<br>TH&THCS TÊNH PHÔNG – QUÀI TỞ – ĐIỆN BIÊN</h1>
+    <div class="subtitle">Học tập • Ôn luyện • Kiểm tra trực tuyến</div>
+</header>
+
+<div class="grade-container">
+    <div class="grade-box" onclick="goToGrade(6)">LỚP 6</div>
+    <div class="grade-box" onclick="goToGrade(7)">LỚP 7</div>
+    <div class="grade-box" onclick="goToGrade(8)">LỚP 8</div>
+    <div class="grade-box" onclick="goToGrade(9)">LỚP 9</div>
+</div>
+
+<div class="login-container">
+    <h2>Đăng nhập hệ thống</h2>
+    <div class="login-box">
+        <button onclick="showLogin('teacher')">Giáo viên</button>
+        <button onclick="showLogin('student')">Học sinh</button>
+    </div>
+
+    <form id="loginForm" onsubmit="return loginUser()">
+        <h3 id="loginTitle"></h3>
+        <input type="text" id="username" placeholder="Tên đăng nhập" required>
+        <input type="password" id="password" placeholder="Mật khẩu" required>
+        <select id="studentType" style="display:none;">
+            <option value="">-- Chọn loại học sinh --</option>
+            <option value="in">Học sinh trong trường</option>
+            <option value="out">Học sinh ngoài trường</option>
+        </select>
+        <button type="submit">Đăng nhập</button>
+    </form>
+</div>
+
+<footer>
+    © 2025 – Hệ thống eLearning TH&THCS Tênh Phông – Quài Tở – Điện Biên |
+    <span class="author">Phát triển bởi giáo viên: Đàm Anh Tuấn</span>
+</footer>
+
+<script>
+function goToGrade(grade) {
+    window.location.href = "grade" + grade + ".html";
+}
+
+function showLogin(role) {
+    document.getElementById("loginForm").style.display = "flex";
+    document.getElementById("loginTitle").innerText =
+        role === "teacher" ? "Đăng nhập dành cho Giáo viên" : "Đăng nhập dành cho Học sinh";
+    document.getElementById("studentType").style.display =
+        role === "student" ? "block" : "none";
+}
+
+function loginUser() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const type = document.getElementById("studentType").value;
+
+    if(user && pass) {
+        if(document.getElementById("loginTitle").innerText.includes("Giáo viên")) {
+            alert("Đăng nhập thành công (Giáo viên): " + user);
+            window.location.href = "teacher_dashboard.html";
+        } else {
+            if(type === "in") {
+                alert("Đăng nhập thành công (Học sinh trong trường): " + user);
+                saveStudentActivity("in");
+            } else if(type === "out") {
+                alert("Đăng nhập thành công (Học sinh ngoài trường): " + user);
+                saveStudentActivity("out");
+            } else {
+                alert("Vui lòng chọn loại học sinh!");
+                return false;
+            }
+            window.location.href = "student_dashboard.html";
+        }
+    } else {
+        alert("Vui lòng nhập đầy đủ thông tin!");
+    }
+    return false;
+}
+
+// Lưu thống kê học sinh vào localStorage
+function saveStudentActivity(type) {
+    let stats = JSON.parse(localStorage.getItem("studentStats")) || {in:0, out:0};
+    stats[type] += 1;
+    localStorage.setItem("studentStats", JSON.stringify(stats));
+}
+</script>
+
+</body>
+</html>
+

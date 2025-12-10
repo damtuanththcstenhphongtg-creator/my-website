@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Bảng điều khiển giáo viên</title>
+
+<style>
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg,#74ebd5,#ACB6E5);
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background: rgba(0,0,0,0.35);
+    color: #fff;
+    padding: 18px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+.container {
+    width: 90%;
+    max-width: 950px;
+    margin: auto;
+    margin-top: 25px;
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.25);
+}
+.teacher-info {
+    font-size: 20px;
+    font-weight: bold;
+    color: #003366;
+    margin-bottom: 20px;
+}
+.section-title {
+    margin-top: 25px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #003366;
+}
+.card-area {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+}
+.card {
+    background: #4a90e2;
+    padding: 20px;
+    color: #fff;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.25s;
+}
+.card:hover {
+    background: #357ABD;
+}
+.logout-btn {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    background: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.logout-btn:hover {
+    background: #c9302c;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">👨‍🏫 BẢNG ĐIỀU KHIỂN GIÁO VIÊN</div>
+
+<div class="container">
+    <div class="teacher-info" id="teacherInfo">Đang tải...</div>
+
+    <div class="section-title">📘 Quản lý lớp học</div>
+    <div class="card-area">
+        <div class="card" onclick="openClass('6')">Lớp 6</div>
+        <div class="card" onclick="openClass('7')">Lớp 7</div>
+        <div class="card" onclick="openClass('8')">Lớp 8</div>
+        <div class="card" onclick="openClass('9')">Lớp 9</div>
+    </div>
+
+    <div class="section-title">📚 Quản lý môn học</div>
+    <div class="card-area">
+        <div class="card" onclick="alert('Chức năng đang phát triển!')">Tạo bài học</div>
+
+        <!-- 🔥 ĐÃ TÍCH HỢP CHỨC NĂNG TẠO ĐỀ KIỂM TRA -->
+        <div class="card" onclick="openQuizGenerator()">Tạo bài kiểm tra</div>
+
+        <div class="card" onclick="alert('Chức năng đang phát triển!')">Chấm bài tự động</div>
+        <div class="card" onclick="alert('Chức năng đang phát triển!')">Tổng hợp điểm</div>
+    </div>
+
+    <div class="section-title">📤 Bài nộp của học sinh</div>
+    <div class="card-area">
+        <div class="card" onclick="openSubmissions()">Xem bài nộp</div>
+        <div class="card" onclick="alert('Chức năng đang phát triển!')">Chấm bài</div>
+    </div>
+
+    <button class="logout-btn" onclick="logout()">Đăng xuất</button>
+</div>
+
+<script>
+// KIỂM TRA ĐĂNG NHẬP
+const teacher = sessionStorage.getItem("teacher");
+
+if (!teacher) {
+    window.location.href = "index.html";
+}
+
+// HIỂN THỊ TÊN GIÁO VIÊN
+document.getElementById("teacherInfo").textContent =
+    "👨‍🏫 Giáo viên: " + teacher;
+
+// MỞ TRANG QUẢN LÝ LỚP
+function openClass(grade) {
+    window.location.href = `teacher_class_${grade}.html`;
+}
+
+// MỞ DANH SÁCH BÀI NỘP
+function openSubmissions() {
+    window.location.href = "submissions_list.html";
+}
+
+// 👉 MỞ TRANG TẠO ĐỀ KIỂM TRA
+function openQuizGenerator() {
+    window.location.href = "/elearning/quiz/quiz_template.html";
+}
+
+// ĐĂNG XUẤT
+function logout() {
+    sessionStorage.clear();
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

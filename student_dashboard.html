@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Bảng điều khiển học sinh</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background: rgba(0,0,0,0.3);
+    padding: 15px;
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    font-weight: 700;
+}
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    margin-top: 25px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.25);
+}
+.student-info {
+    font-size: 18px;
+    font-weight: bold;
+    color: #003366;
+    padding: 10px 0;
+}
+.subject-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+.subject-item {
+    background: #4a90e2;
+    padding: 15px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.subject-item:hover {
+    background: #357ABD;
+}
+.logout-btn {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    background: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.logout-btn:hover {
+    background: #c9302c;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">📚 Bảng điều khiển học sinh</div>
+
+<div class="container">
+    <div class="student-info" id="studentInfo">Đang tải...</div>
+
+    <h3>📘 Các môn học</h3>
+
+    <div class="subject-list" id="subjectList">
+        <!-- Tự động tạo dựa theo lớp -->
+    </div>
+
+    <button class="logout-btn" onclick="logout()">Đăng xuất</button>
+</div>
+
+<script>
+// DANH SÁCH MÔN HỌC THEO LỚP
+const subjectsByGrade = {
+    "6": ["Toán", "Ngữ văn", "Tiếng Anh", "Vật lí", "Hóa học", "Sinh học", "Lịch sử", "Địa lí", "Tin học", "Công nghệ"],
+    "7": ["Toán", "Ngữ văn", "Tiếng Anh", "Vật lí", "Hóa học", "Sinh học", "Lịch sử", "Địa lí", "Tin học", "Công nghệ"],
+    "8": ["Toán", "Ngữ văn", "Tiếng Anh", "Vật lí", "Hóa học", "Sinh học", "Lịch sử", "Địa lí", "Tin học", "Công nghệ"],
+    "9": ["Toán", "Ngữ văn", "Tiếng Anh", "Vật lí", "Hóa học", "Sinh học", "Lịch sử", "Địa lí", "Tin học", "Công nghệ"]
+};
+
+// Kiểm tra đăng nhập
+const student = sessionStorage.getItem("student");
+const grade = sessionStorage.getItem("grade");
+
+if (!student || !grade) {
+    window.location.href = "index.html";
+}
+
+// Hiển thị tên học sinh + lớp
+document.getElementById("studentInfo").textContent =
+    "👤 Học sinh: " + student + " | Lớp: " + grade;
+
+// Tạo danh sách môn học theo lớp
+function loadSubjects() {
+    const list = document.getElementById("subjectList");
+    list.innerHTML = "";
+
+    const subjects = subjectsByGrade[grade];
+
+    subjects.forEach(sub => {
+        const div = document.createElement("div");
+        div.className = "subject-item";
+
+        const fileName = `grade${grade}_${toFileName(sub)}.html`;
+
+        div.onclick = () => {
+            window.location.href = fileName;
+        };
+
+        div.textContent = sub;
+        list.appendChild(div);
+    });
+}
+
+// Convert tên môn → file (vd: "Toán" → "toan")
+function toFileName(sub) {
+    return sub
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/ /g, "_");
+}
+
+loadSubjects();
+
+// Đăng xuất
+function logout() {
+    sessionStorage.clear();
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

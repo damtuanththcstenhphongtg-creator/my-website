@@ -1,0 +1,108 @@
+{
+  "subject": "Tin học 9",
+  "grade": 9,
+  "lessons": [
+    {
+      "id": "ict_lesson1",
+      "title": "Bài 1 – Thế giới kĩ thuật số",
+      "file": "lesson1.html",
+      "type": "theory"
+    },
+    {
+      "id": "ict_lesson2",
+      "title": "Bài 2 – Thông tin trong giải quyết vấn đề",
+      "file": "lesson2.html",
+      "type": "theory"
+    },
+    {
+      "id": "ict_lesson3",
+      "title": "Thực hành – Đánh giá chất lượng thông tin",
+      "file": "lesson3.html",
+      "type": "practice"
+    },
+    {
+      "id": "ict_lesson4",
+      "title": "Một số vấn đề pháp lí về sử dụng dịch vụ Internet",
+      "file": "lesson4.html",
+      "type": "theory"
+    },
+    {
+      "id": "ict_lesson5",
+      "title": "Bài 5 – Tìm hiểu phần mềm mô phỏng",
+      "file": "lesson5.html",
+      "type": "theory"
+    },
+    {
+      "id": "ict_lesson6",
+      "title": "Thực hành – Khai thác phần mềm mô phỏng",
+      "file": "lesson6.html",
+      "type": "practice"
+    },
+    {
+      "id": "ict_lesson7",
+      "title": "Khả năng trình bày thông tin đa phương tiện của sơ đồ tư duy",
+      "file": "lesson7.html",
+      "type": "theory"
+    },
+    {
+      "id": "ict_lesson8",
+      "title": "Thực hành – Sử dụng công cụ trực quan trong trình bày thông tin",
+      "file": "lesson8.html",
+      "type": "practice"
+    },
+    {
+      "id": "ict_lesson9",
+      "title": "Sử dụng công cụ xác thực dữ liệu",
+      "file": "lesson9.html",
+      "type": "theory"
+    },
+    {
+      "id": "ict_lesson10",
+      "title": "Sử dụng hàm COUNTIF()",
+      "file": "lesson10.html",
+      "type": "theory"
+    },
+    {
+      "id": "ict_lesson11",
+      "title": "Sử dụng hàm SUMIF()",
+      "file": "lesson11.html",
+      "type": "theory"
+    },
+    {
+      "id": "ict_lesson12",
+      "title": "Sử dụng hàm IF()",
+      "file": "lesson12.html",
+      "type": "theory"
+    },
+    {
+      "id": "ict_lesson13",
+      "title": "Hoàn thiện bảng tính quản lí tài chính gia đình",
+      "file": "lesson13.html",
+      "type": "practice"
+    },
+    {
+      "id": "ict_lesson14",
+      "title": "Giải quyết vấn đề",
+      "file": "lesson14.html",
+      "type": "theory"
+    },
+    {
+      "id": "ict_lesson15",
+      "title": "Bài toán Tin học",
+      "file": "lesson15.html",
+      "type": "theory"
+    },
+    {
+      "id": "ict_lesson16",
+      "title": "Thực hành lập chương trình máy tính",
+      "file": "lesson16.html",
+      "type": "practice"
+    },
+    {
+      "id": "ict_lesson17",
+      "title": "Tin học và thế giới nghề nghiệp",
+      "file": "lesson17.html",
+      "type": "theory"
+    }
+  ]
+}

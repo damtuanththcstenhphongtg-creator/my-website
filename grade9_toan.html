@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Toán 9 – Danh sách bài học</title>
+<style>
+body { font-family: Segoe UI; background: #eef6ff; padding: 20px; }
+.wrap { max-width: 800px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; }
+.lesson {
+    padding: 12px;
+    margin: 8px 0;
+    background: #f1f7ff;
+    border-left: 4px solid #007bff;
+}
+.lesson a { color: #004a99; font-weight: bold; text-decoration: none; }
+.lesson a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+    <h1>📘 Toán 9 — Danh sách bài học</h1>
+
+    <p>Chọn bài học để bắt đầu:</p>
+
+    <div id="lessons"></div>
+</div>
+
+<script>
+// Tạo danh sách 32 bài học
+let container = document.getElementById("lessons");
+
+for (let i = 1; i <= 32; i++) {
+    let div = document.createElement("div");
+    div.className = "lesson";
+    div.innerHTML = `<a href="lessons/grade9/math/lesson${i}.html">Bài ${i}</a>`;
+    container.appendChild(div);
+}
+</script>
+
+</body>
+</html>
